@@ -4,3 +4,18 @@
 	max-width: 1170px; 
 	margin: 0 auto;
 }
+
+/* header */
+.top-banner{
+	background-color: #ffe8e8;
+	position: relative;
+	text-align: center;
+	color: #b05d5d;
+	font-size: 0.75rem;
+	padding: 0.5rem 0;
+}
+.top-banner .fa-times{
+	float: right;
+	margin:0.2rem;
+	cursor: pointer;
+}
