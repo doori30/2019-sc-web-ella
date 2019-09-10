@@ -29,7 +29,7 @@
 	padding: 1rem 0;
 }
 
-.top-icons > div {
+.top-icons>div {
 	margin-left: 0.75rem;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .langs .fa-angle-down,
-.currency .fa-angle-down{
+.currency .fa-angle-down {
 	color: #666;
 }
 
@@ -55,8 +55,8 @@
 	width: 18px;
 }
 
-.langs > ul,
-.currency > ul {
+.langs>ul,
+.currency>ul {
 	position: absolute;
 	background-color: #ffffff;
 	padding: 0.5rem;
@@ -64,34 +64,35 @@
 	display: none;
 }
 
-.langs > ul > li,
-.currency > ul > li {
+.langs>ul>li,
+.currency>ul>li {
 	display: flex;
 	padding: 0.25rem 0;
 	align-items: center;
 }
 
-.schs{
+/* search bar & layer */
+.schs {
 	position: relative;
 	background-color: #f1f1f1;
 	padding: 0.25rem;
 	border-bottom: 1px solid #ccc;
 }
 
-.schs input{
+.schs input {
 	width: 130px;
 	background-color: transparent;
 	outline-color: transparent;
 	padding-left: 0.5rem;
 }
 
-.schs button{
-	padding:0 0.5rem;
+.schs button {
+	padding: 0 0.5rem;
 	background-color: transparent;
 	outline-color: transparent;
 }
 
-.sch-layer{
+.sch-layer {
 	width: 500px;
 	padding: 1rem;
 	border: 1px solid #ccc;
@@ -100,9 +101,10 @@
 	right: 0;
 	top: 30px;
 	border: 1px solid #eee;
+	display: none;
 }
 
-.sch-layer .tit{
+.sch-layer .tit {
 	color: #333;
 	padding: 0.25rem 0;
 	border-bottom: 1px solid #ccc;
@@ -110,16 +112,105 @@
 	margin-bottom: 1rem;
 }
 
-.sch-layer .tags { 
+.sch-layer .tags {
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex-wrap: wrap;
+	margin-bottom: 1rem;
 }
 
-.sch-layer .tag{
+.sch-layer .tag {
 	padding: 0.5rem 0.35rem;
 	background-color: #eee;
 	color: #aaa;
-	margin:0.25rem;
+	margin: 0.25rem;
+}
+
+.sch-layer .prds {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.sch-layer .prd {
+	flex: 33.3333% 0 0;
+	padding: 0 0.5rem;
+}
+
+.sch-layer .prd>li {
+	margin-bottom: 0.5rem;
+}
+
+.sch-layer .prd-tit,
+.sch-layer .sch-price {
+	font-weight: bold;
+}
+
+.sch-layer .prd-refs {
+	display: flex;
+	align-items: center;
+}
+
+.sch-layer .prd-ref:not(:last-child) {
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	margin-right: 0.25rem;
+}
+
+.top-links {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.75rem;
+}
+
+.top-links > .logo {
+	width: 100px;
+}
+
+.top-link > .desc {
+	font-weight: bold;
+	text-align: right;
+}
+
+.top-link > .bts {
+	display: flex;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+.top-link > .bts > li {
+	display: flex;
+	align-items: center;
+	margin-left: 1rem;
+}
+
+.top-link>.bts>li *{
+	margin-left: 0.5rem;
+}
+
+.top-link .rnd-cnt{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: lightcoral;
+	text-align: center;
+}
+
+.top-link .underbar {
+	cursor: pointer;
+}
+
+.top-link .underbar > div{
+	border-bottom: 1px solid #222;
+	width: 0;
+	transition: all 1s;
+}
+
+.top-link .underbar:hover > div {
+	width: 100%;
 }
