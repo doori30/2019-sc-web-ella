@@ -11,7 +11,7 @@
 
 .underbar:after {
 	display: block;
-	content:"";
+	content: "";
 	border-bottom: 1px solid #222;
 	width: 0;
 	transition: all 0.5s;
@@ -20,10 +20,20 @@
 .underbar:hover:after {
 	width: 100%;
 }
+
 /* 
 before: 작업이 끝난 후에 
 after: 작업이 닫히기 전에 작업을 실행. 
 */
+.tip {
+	position: absolute;
+	color: #ffff;
+	padding: 2px 4px 6px 4px;
+	font-size: 0.5rem;
+	background: url(../img/tooltip-bar.png) no-repeat center bottom;
+	top: -24px;
+	right: 0;
+}
 
 
 /* header */
@@ -229,15 +239,14 @@ after: 작업이 닫히기 전에 작업을 실행.
 .top-navis {
 	background-color: #232323;
 	margin-top: 0.75rem;
-	font-size:0.75rem;
+	font-size: 0.75rem;
 }
 
-.top-navis > .top-navi{
+.top-navis>.top-navi {
 	display: flex;
-	position: relative;
-} 
+}
 
-.top-navis .underbar:after{
+.top-navis .underbar:after {
 	border-color: #ffff;
 }
 
@@ -245,7 +254,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 	padding: 0.75rem 0;
 	margin-right: 2rem;
 	color: #ffff;
-	font-weight:bold;
+	font-weight: bold;
 	letter-spacing: 1.5px;
+	position: relative;
 }
-
