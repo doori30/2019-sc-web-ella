@@ -5,7 +5,29 @@
 	margin: 0 auto;
 }
 
+.underbar {
+	cursor: pointer;
+}
+
+.underbar:after {
+	display: block;
+	content:"";
+	border-bottom: 1px solid #222;
+	width: 0;
+	transition: all 0.5s;
+}
+
+.underbar:hover:after {
+	width: 100%;
+}
+/* 
+before: 작업이 끝난 후에 
+after: 작업이 닫히기 전에 작업을 실행. 
+*/
+
+
 /* header */
+/* banner */
 .top-banner {
 	background-color: #ffe8e8;
 	position: relative;
@@ -168,32 +190,32 @@
 	font-size: 0.75rem;
 }
 
-.top-links > .logo {
+.top-links>.logo {
 	width: 100px;
 }
 
-.top-link > .desc {
+.top-link>.desc {
 	font-weight: bold;
 	text-align: right;
 }
 
-.top-link > .bts {
+.top-link>.bts {
 	display: flex;
 	align-items: center;
 	margin-top: 0.5rem;
 }
 
-.top-link > .bts > li {
+.top-link>.bts>li {
 	display: flex;
 	align-items: center;
 	margin-left: 1rem;
 }
 
-.top-link>.bts>li *{
+.top-link>.bts>li * {
 	margin-left: 0.5rem;
 }
 
-.top-link .rnd-cnt{
+.top-link .rnd-cnt {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -201,16 +223,29 @@
 	text-align: center;
 }
 
-.top-link .underbar {
-	cursor: pointer;
+
+
+/* top-navis */
+.top-navis {
+	background-color: #232323;
+	margin-top: 0.75rem;
+	font-size:0.75rem;
 }
 
-.top-link .underbar > div{
-	border-bottom: 1px solid #222;
-	width: 0;
-	transition: all 1s;
+.top-navis > .top-navi{
+	display: flex;
+	position: relative;
+} 
+
+.top-navis .underbar:after{
+	border-color: #ffff;
 }
 
-.top-link .underbar:hover > div {
-	width: 100%;
+.top-navis .navi {
+	padding: 0.75rem 0;
+	margin-right: 2rem;
+	color: #ffff;
+	font-weight:bold;
+	letter-spacing: 1.5px;
 }
+
