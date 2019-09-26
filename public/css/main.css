@@ -1,4 +1,8 @@
 /* 공통사항 */
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+
+/* font-family: 'Nanum Gothic', sans-serif; */
+
 .wrap {
 	width: 100%;
 	max-width: 1170px;
@@ -267,6 +271,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 	color: #333;
 	left: 0;
 	top: 43px;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2); 
 	/* display: none; */
 }
 
@@ -398,15 +403,18 @@ after: 작업이 닫히기 전에 작업을 실행.
 	padding: 0.25rem 0;
 }
 
-.sub-ad2 .prd-banner{
+.sub-ad2 .prd-banner,
+.sub-ad3 .prd-banner{
 	overflow: hidden;
 }
 
-.sub-ad2 .prd-banner > img {
+.sub-ad2 .prd-banner > img,
+.sub-ad3 .prd-banner > img{
 	transition: all 0.5s;
 }
 
-.sub-ad2 .prd-banner:hover > img {
+.sub-ad2 .prd-banner:hover > img,
+.sub-ad3 .prd-banner:hover > img {
 	transform: scale(1.2);
 }
 
@@ -432,4 +440,71 @@ after: 작업이 닫히기 전에 작업을 실행.
 .grid-card .sub-navi {
 	padding: 0.25rem 0;
 	font-weight: normal;
+}
+
+.subs-local {
+	width: 200px !important;
+}
+
+.subs-local > * {
+	padding: 0.75rem 0;
+}
+
+.subs-local > :not(:last-child) {
+	border-bottom: 1px solid #ccc; 
+}
+
+.grid-masonry {
+	display: flex;
+	justify-content: space-between;
+}
+
+.grid-masonry>.sub-navi {
+	width: 800px;
+}
+
+.grid-masonry>.sub-navi>ul {
+	margin-bottom: 2rem;
+}
+
+.grid-masonry>.sub-navi>ul>li {
+	padding-bottom: 0.5rem;
+}
+
+.grid-sizer,
+.grid-item {
+	width: 25%;
+}
+
+/* 메인베너 */
+.main-bans {
+	position: relative
+}
+
+.main-ban {
+	position: relative
+}
+
+.main-bans > .pager-prev,
+.main-bans > .pager-next {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: 2px solid #666;
+	border-radius: 50%;
+	color: #666;
+	font-size: 3rem;
+	line-height: 76px;
+	text-align: center;
+	top:50%;
+	transform: translateY(-50%);
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.main-bans > .pager-prev {
+	left:10%;
+}
+
+.main-bans > .pager-next{
+	right:10%;
 }
