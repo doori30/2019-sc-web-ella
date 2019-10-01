@@ -85,12 +85,16 @@ body {
 	position: relative;
 }
 
+.common-img > img {
+	transition: all 1s;
+}
+
 .common-img > .img-hover {
 	position: absolute;
 	top:0;
 	left: 0;
 	width: 100%;
-	opacity: 0.5;
+	opacity: 0;
 }
 
 .common-img > ul {
@@ -103,6 +107,19 @@ body {
 	flex-direction: column;
 	justify-content: flex-end; 
 	align-items: center;
+	opacity: 0;
+	transition: all 1s;
+}
+
+.common-img:hover > .img-def {
+	opacity: 0;
+}
+
+.common-img:hover > .img-hover {
+	opacity: 0.5;
+}
+.common-img:hover > ul {
+	opacity: 1;
 }
 
 .common-img > ul > li {
@@ -146,11 +163,8 @@ body {
 	cursor: pointer;
 }
 
-.common-img .size.size-more {
-	background-color: transparent;
-	border: none;
-}
 /* 붙여쓰기를 해야 순위가 올라감. */
+.common-img .size.size-more,
 .common-img .size.size-more:hover {
 	background-color: transparent;
 	border: none;
@@ -168,7 +182,55 @@ body {
 	color:#aaa;
 }
 
+.common-brand,
+.common-summary,
+.common-price{
+	font-size: 1.125em;
+	color: #444;
+}
 
+.common-brand{
+	margin-top: 1rem;
+}
+
+.common-summary{
+	margin-top: 0.25rem;
+}
+
+.common-price{
+	margin-top: 0.25rem;
+	font-weight:900;
+}
+
+.common-rel {
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: center;
+}
+
+.common-rel > .rel {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	overflow: hidden;
+	padding: 2px;
+	border: 1px solid #aaa;
+	margin: 0 0.25rem;
+}
+
+.common-rel > .rel > div {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.common-rel > .rel > div > img {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateY(-20%);
+}
 
 /* Header */
 .top-banner {
