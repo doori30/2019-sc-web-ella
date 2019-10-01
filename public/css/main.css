@@ -1,7 +1,12 @@
 /* 공통사항 */
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:700,900&display=swap');
 
-/* font-family: 'Nanum Gothic', sans-serif; */
+html,
+body {
+	font-family: 'Lato', sans-serif;
+	height: 10000px;
+}
 
 .wrap {
 	width: 100%;
@@ -25,23 +30,44 @@
 	width: 100%;
 }
 
-/* 
-before: 작업이 끝난 후에 
-after: 작업이 닫히기 전에 작업을 실행. 
-*/
 .tip {
 	position: absolute;
-	color: #ffff;
-	padding: 2px 4px 6px 4px;
+	color: #fff;
 	font-size: 0.5rem;
+	padding: 2px 4px 6px 4px;
 	background: url(../img/tooltip-bar.png) no-repeat center bottom;
 	top: -24px;
 	right: 0;
 }
 
+.bt-rev {
+	padding: 0.5rem 4rem;
+	display: inline-block;
+	font-size: 0.875rem;
+	color: #f9f9f9;
+	background-color: #111;
+	font-weight: bold;
+	transition: all 1s;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
 
-/* header */
-/* banner */
+.bt-rev:hover {
+	color: #111;
+	background-color: #f9f9f9;
+}
+
+.bt-rev.invert {
+	color: #111;
+	background-color: #f9f9f9;
+}
+
+.bt-rev.invert:hover {
+	color: #f9f9f9;
+	background-color: #111;
+}
+
+/* Header */
 .top-banner {
 	background-color: #ffe8e8;
 	position: relative;
@@ -53,7 +79,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 
 .top-banner .fa-times {
 	float: right;
-	margin: 0.2rem;
+	margin-top: 0.2rem;
 	cursor: pointer;
 }
 
@@ -66,7 +92,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .top-icons>div {
-	margin-left: 0.75rem;
+	margin-left: 1rem;
 }
 
 .langs,
@@ -94,7 +120,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 .langs>ul,
 .currency>ul {
 	position: absolute;
-	background-color: #ffffff;
+	background-color: #fff;
 	padding: 0.5rem;
 	top: 18px;
 	display: none;
@@ -107,7 +133,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 	align-items: center;
 }
 
-/* search bar & layer */
+/* 상단 서치바와 서치레이어 */
 .schs {
 	position: relative;
 	background-color: #f1f1f1;
@@ -130,13 +156,12 @@ after: 작업이 닫히기 전에 작업을 실행.
 
 .sch-layer {
 	width: 500px;
-	padding: 1rem;
-	border: 1px solid #ccc;
-	background-color: #ffff;
 	position: absolute;
 	right: 0;
 	top: 30px;
+	padding: 1rem;
 	border: 1px solid #eee;
+	background-color: #fff;
 	display: none;
 }
 
@@ -180,7 +205,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .sch-layer .prd-tit,
-.sch-layer .sch-price {
+.sch-layer .prd-price {
 	font-weight: bold;
 }
 
@@ -220,12 +245,12 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .top-link>.bts>li {
+	margin-left: 1rem;
 	display: flex;
 	align-items: center;
-	margin-left: 1rem;
 }
 
-.top-link>.bts>li * {
+.top-link>.bts>li>* {
 	margin-left: 0.5rem;
 }
 
@@ -238,8 +263,6 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 
-
-/* top-navis */
 .top-navis {
 	background-color: #232323;
 	margin-top: 0.75rem;
@@ -252,27 +275,26 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .top-navis .underbar:after {
-	border-color: #ffff;
+	border-color: #fff;
 }
 
 .top-navis .navi {
 	padding: 0.75rem 0;
 	margin-right: 2rem;
-	color: #ffff;
+	color: #fff;
 	font-weight: bold;
 	letter-spacing: 1.5px;
 }
 
 .top-navis .subs {
-	position: absolute;
-	padding: 1rem;
 	width: 100%;
-	background-color: #ffff;
-	color: #333;
+	padding: 1rem;
+	background-color: #fff;
+	position: absolute;
 	left: 0;
 	top: 43px;
-	box-shadow: 0 2px 2px rgba(0,0,0,0.2); 
-	/* display: none; */
+	color: #333;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .top-navis .subs .underbar:after {
@@ -284,11 +306,10 @@ after: 작업이 닫히기 전에 작업을 실행.
 	display: inline-block;
 }
 
-.sub-navi a,
 .sub-navi a:link,
 .sub-navi a:visited,
 .sub-navi a:active {
-	color: #777;
+	color: #888;
 }
 
 .sub-navi a:hover {
@@ -301,8 +322,8 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .grid-two>.sub-navi {
-	display: flex;
 	width: 600px;
+	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
 }
@@ -333,7 +354,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 	display: flex;
 	letter-spacing: 0;
 	text-align: center;
-	font-size:0.75rem;
+	font-size: 0.75rem;
 	align-items: flex-start;
 }
 
@@ -343,7 +364,7 @@ after: 작업이 닫히기 전에 작업을 실행.
 }
 
 .sub-ad2 .prd {
-	padding: 0 1rem;
+	padding: 0 0.5rem;
 }
 
 .sub-ad2 .prd>li {
@@ -361,12 +382,12 @@ after: 작업이 닫히기 전에 작업을 실행.
 	right: 0;
 	padding: 0 0.25rem;
 	background-color: #ef5845;
-	color: #ffffff;
+	color: #fff;
 	font-size: 0.75em;
 	font-weight: bold;
 }
 
-.sub-ad2 .prd-img >img:hover{
+.sub-ad2 .prd-img>img:hover {
 	opacity: 0.5;
 	transition: all 0.5s;
 }
@@ -379,42 +400,46 @@ after: 작업이 닫히기 전에 작업을 실행.
 	line-height: 1.5;
 }
 
-.sub-ad2 .prd-price>:nth-child(1) {
+.sub-ad2 .prd-price {
+	font-weight: bold;
+}
+
+.sub-ad2 .prd-price> :nth-child(1) {
 	color: #888;
 	text-decoration: line-through;
 }
 
-.sub-ad2 .prd-price>:nth-child(2) {
+.sub-ad2 .prd-price> :nth-child(2) {
 	margin: 0 0.25rem;
+	color: #bbb;
 	font-size: 0.875em;
-	color: #bbb
 }
 
-.sub-ad2 .prd-price>:nth-child(3) {
+.sub-ad2 .prd-price> :nth-child(3) {
 	color: #ef5845;
 }
 
-.sub-ad2 .prd-opts{
+.sub-ad2 .prd-opts {
 	margin-top: 1rem;
 }
 
-.sub-ad2 .prd-opts > span {
+.sub-ad2 .prd-opts>span {
 	border-bottom: 1px solid #333;
 	padding: 0.25rem 0;
 }
 
 .sub-ad2 .prd-banner,
-.sub-ad3 .prd-banner{
+.sub-ad3 .prd-banner {
 	overflow: hidden;
 }
 
-.sub-ad2 .prd-banner > img,
-.sub-ad3 .prd-banner > img{
-	transition: all 0.5s;
+.sub-ad2 .prd-banner>img,
+.sub-ad3 .prd-banner>img {
+	transition: all 1s;
 }
 
-.sub-ad2 .prd-banner:hover > img,
-.sub-ad3 .prd-banner:hover > img {
+.sub-ad2 .prd-banner:hover>img,
+.sub-ad3 .prd-banner:hover>img {
 	transform: scale(1.2);
 }
 
@@ -423,18 +448,19 @@ after: 작업이 닫히기 전에 작업을 실행.
 	justify-content: space-between;
 	font-size: 0.75rem;
 }
-.grid-card > ul {
+
+.grid-card>ul {
 	flex: 19% 0 0;
 }
 
-.grid-card > ul > li {
+.grid-card>ul>li {
 	margin-bottom: 1rem;
 }
 
 .grid-card .prd-tit {
 	color: #222;
 	font-weight: bold;
-	margin-top: 1rem; 
+	margin-top: 1rem;
 }
 
 .grid-card .sub-navi {
@@ -446,12 +472,12 @@ after: 작업이 닫히기 전에 작업을 실행.
 	width: 200px !important;
 }
 
-.subs-local > * {
+.subs-local>* {
 	padding: 0.75rem 0;
 }
 
-.subs-local > :not(:last-child) {
-	border-bottom: 1px solid #ccc; 
+.subs-local> :not(:last-child) {
+	border-bottom: 1px solid #eee;
 }
 
 .grid-masonry {
@@ -476,17 +502,26 @@ after: 작업이 닫히기 전에 작업을 실행.
 	width: 25%;
 }
 
-/* 메인베너 */
+
+/* 메인 배너 */
 .main-bans {
-	position: relative
+	position: relative;
+	overflow: hidden;
 }
 
 .main-ban {
-	position: relative
+	position: relative;
+	width: 300%;
+	display: flex;
 }
 
-.main-bans > .pager-prev,
-.main-bans > .pager-next {
+.main-ban>li {
+	position: relative;
+	flex: 100% 1 1;
+}
+
+.main-bans>.pager-prev,
+.main-bans>.pager-next {
 	position: absolute;
 	width: 80px;
 	height: 80px;
@@ -494,17 +529,190 @@ after: 작업이 닫히기 전에 작업을 실행.
 	border-radius: 50%;
 	color: #666;
 	font-size: 3rem;
-	line-height: 76px;
+	line-height: 78px;
 	text-align: center;
-	top:50%;
+	top: 50%;
 	transform: translateY(-50%);
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	opacity: 0;
+	transition: opacity 1s;
 }
 
-.main-bans > .pager-prev {
-	left:10%;
+.main-bans>.pager-prev {
+	left: 10%;
 }
 
-.main-bans > .pager-next{
-	right:10%;
+.main-bans>.pager-next {
+	right: 10%;
+}
+
+.main-bans:hover>.pager-prev,
+.main-bans:hover>.pager-next {
+	opacity: 1;
+}
+
+.ban-conts {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	width: 400px;
+}
+
+.ban-conts>.ban-tit {
+	font-size: 2.5rem;
+	font-weight: 900;
+	padding: 0.5rem 0;
+}
+
+.ban-conts>.ban-bar {
+	width: 40px;
+	border-bottom: 2px solid #111;
+	display: inline-block;
+}
+
+.ban-conts>.ban-cont {
+	font-size: 0.75rem;
+	color: #444;
+	padding: 1rem 0 1.5rem 0;
+}
+
+.main-ban> :nth-child(1)>.ban-conts {
+	left: 20%;
+}
+
+.main-ban> :nth-child(3)>.ban-conts {
+	right: 20%;
+}
+
+.bests {
+	margin-top: 4rem;
+	position: relative;
+}
+
+.best-items {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.best-item {
+	flex: 18% 0 1;
+	position: relative;
+	background-color: #111;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.best-item>img {
+	transition: all 1s;
+}
+
+.best-item:hover>img {
+	transform: scale(1.2);
+	opacity: 0.8;
+}
+
+.best-item:hover>.underbar:after {
+	width: 100%;
+}
+
+.best-item>.underbar {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #f9f9f9;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.best-item>.underbar:after {
+	border-color: #f9f9f9;
+}
+
+.best-prev,
+.best-next {
+	width: 30px;
+	height: 30px;
+	border: 1px solid #111;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 30px;
+	font-family: 'Poppins', sans-serif;
+	color: #111;
+	background-color: #f9f9f9;
+	transition: all 1s;
+	position: absolute;
+	top: calc(50% - 15px);
+	font-weight: bold;
+	font-size: 1.25rem;
+	cursor: pointer;
+}
+
+.best-prev:hover,
+.best-next:hover {
+	color: #f9f9f9;
+	background-color: #111;
+}
+
+.best-prev {
+	left: -15px;
+}
+
+.best-next {
+	right: -15px;
+}
+
+/*BEST-SELLERS*/
+.sellers {
+	border-top: 1px solid #ddd;
+	margin-top: 4rem;
+}
+
+.seller-items {
+	width: 100%;
+	max-width: 1980px;
+	margin: 0 auto;
+	display: flex;
+}
+
+.seller-items>div {
+	flex: 40.5% 0 0;
+	border: 1px solid red;
+}
+
+.seller-items>div:first-child {
+	padding-right: 5%;
+}
+
+.seller-imgs {
+	position: relative;
+}
+
+.seller-conts {
+	position: absolute;
+	top: 50%;
+	left: 15%;
+	transform: translateY(-50%);
+	text-align: center;
+	width: 60%;
+	color: #f9f9f9;
+}
+
+.seller-conts>.seller-tit {
+	font-size: 2.5rem;
+	font-weight: 900;
+	padding: 0.5rem 0;
+}
+
+.seller-conts>.seller-slogan {
+	letter-spacing: 3px;
+	font-size: 0.875rem;
+}
+
+.seller-conts>.seller-cont {
+	font-size: 0.75rem;
+	padding: 1rem 0 1.5rem 0;
+	letter-spacing: 1px;
 }
