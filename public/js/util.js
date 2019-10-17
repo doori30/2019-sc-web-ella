@@ -149,5 +149,37 @@ function pagerMaker($pager, grpCnt, divCnt, total, page, cb) {
 	html += '</li>';
 	$pager.html(html);
 	$(".page-item").css({"cursor":"pointer"});
-	$(".page-item").click(cb);
+	$(".page-item").click(cb); //gbook_ajax방명록에서 사용함. 매번 사용 할 때마다 실행됨.
 }
+	$(".page-item").click(function () {
+		var n = $(this).data("page");
+		if (n !== undefined) location.href = $(".pager").data("pager-name") + n;
+																									// /gbook/li, /mem/list를 보여줄 때
+	});//ajax제외 나머지에서 사용
+
+
+var imgExt = ["jpg", "jpeg", "png", "gif"];
+var fileExt = ["hwp", "xls", "xlsx", "ppt", "pptx", "doc", "docx", "txt", "zip", "pdf"];
+
+//함수표현식->함수로 변경(예전explorer가 안먹힐 수 있기때문)
+function splitName(file) {
+	var arr = file.split("."); //"a.b.jpg" -> ["a","b","jpg"] 나누기
+	var obj ={};
+	obj.ext = arr[1]//확장자
+	obj.name = arr[0]//0~89 +10 =99 확장자가 없는 이름
+	return obj;
+}
+
+function findPath(d) {
+	var year = String(d.getFullYear()).substr(2);
+	var month = d.getMonth() + 1;
+	if(month < 10) month = "0" + month;
+	return year + month;
+}
+
+function telChk(obj){//전화번호의 obj를 받아서 4자리보다 크면 obj.value를 다음과 같이 바꿔줄것.
+	if (String(obj.value).length > 4){
+			obj.value = obj.value.slice(0, 4);
+	}
+}
+

@@ -44,6 +44,10 @@ img {/* 이미지를 inline-block으로 바꿔서 글씨 요소를 제거하고,
 	clear:both;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 .abs {
 	position: absolute;
 }
