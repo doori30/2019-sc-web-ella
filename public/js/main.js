@@ -41,9 +41,41 @@ $(".sel-top li").click(function(){
   $(this).parent().parent().children(".sel-top-txt").text($(this).children("span").text());
   $(this).parent().prev().trigger("click");
 });
+//▲
+// $(".sel-top li").click(function(){
+//   var src = $(this).find("img").attr("src"); //getter-가져옴
+//   var txt = $(this).find("span").attr("src");
+//   $(this).parent().parent().find(".sel-top-img").attr("src",src); //setter-보여줌
+//   $(this).parent().parent().find(".sel-top-txt").text(txt);
+//   $(this).parent().prev().trigger("click");
+// });
+
+/* navi sub내용 보이기 2가지 */
+//메인 네이게이션
+$(".navi-under").mouseenter(function(){
+  $(this).find(".subs").css({"visibility":"visible"}).stop().animate({"top":"43px","opacity":1},300);
+});
+$(".navi-under").mouseleave(function(){
+  $(this).find(".subs").stop().animate({"top":"143px","opacity":0},300,function(){
+    $(this).css({"visibility":"hidden"});
+  });
+});
+$(".navi-show").mouseenter(function(){
+  $(this).find(".subs").css({"visibility":"visible"}).stop().animate({"opacity":1},300);
+});
+$(".navi-show").mouseleave(function(){
+  $(this).find(".subs").stop().animate({"opacity":0},300,function(){
+    $(this).css({"visibility":"hidden"});
+  });
+});
+
+//배너-(fade, slide(전체), slide(하나씩), slide(세로))
+
 
 // init Masonry
 var $grid = $('.grid-wrap').imagesLoaded( function() {
+  //모든이미지가 로딩이 되면 실행.
+  //혹은 리사이즈될 때 실행이 된다.
 $grid.masonry({
   // set itemSelector so .grid-sizer is not used in layout
   itemSelector: '.grid-item',
@@ -51,4 +83,5 @@ $grid.masonry({
   columnWidth: '.grid-sizer',
   percentPosition: true
 });
+//display:none이 되면 표현이 되지않아 css를 적용 시키지 않는다.
 });
