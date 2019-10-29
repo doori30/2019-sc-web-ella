@@ -406,6 +406,7 @@ body {
 	border: 1px solid #eee;
 	background-color: #fff;
 	display: none;
+	z-index: 9998;
 }
 
 .sch-layer .tit {
@@ -828,11 +829,11 @@ body {
 	padding: 1rem 0 1.5rem 0;
 }
 
-.main-ban> :nth-child(1)>.ban-conts {
+.main-ban .ban-conts.lt20 {
 	left: 20%;
 }
 
-.main-ban> :nth-child(3)>.ban-conts {
+.main-ban .ban-conts.rt20 {
 	right: 20%;
 }
 
