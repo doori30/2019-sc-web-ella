@@ -599,30 +599,32 @@
 		</section>
 	</main>
 	<section class="bests wrap">
-		<ul class="best-items">
-			<li class="best-item">
-				<img src="../img/home-3-collections-1-compressor_300x_crop_center.jpg" alt="best" class="img">
-				<div class="underbar">SUITO</div>
-			</li>
-			<li class="best-item">
-				<img src="../img/home-3-collections-2-compressor_300x_crop_center.jpg" alt="best" class="img">
-				<div class="underbar">SUITO</div>
-			</li>
-			<li class="best-item">
-				<img src="../img/home-3-collections-3-compressor_300x_crop_center.jpg" alt="best" class="img">
-				<div class="underbar">SUITO</div>
-			</li>
-			<li class="best-item">
-				<img src="../img/home-3-collections-4-compressor_300x_crop_center.jpg" alt="best" class="img">
-				<div class="underbar">SUITO</div>
-			</li>
-			<li class="best-item">
-				<img src="../img/home-3-collections-5-compressor_300x_crop_center.jpg" alt="best" class="img">
-				<div class="underbar">SUITO</div>
-			</li>
-		</ul>
-		<div class="best-prev">&lt;</div>
-		<div class="best-next">&gt;</div>
+		<div class="best-wrap">
+			<ul class="best-items">
+				<li class="best-item">
+					<img src="../img/home-3-collections-1-compressor_300x_crop_center.jpg" alt="best" class="img">
+					<div class="underbar">SUITO</div>
+				</li>
+				<li class="best-item">
+					<img src="../img/home-3-collections-2-compressor_300x_crop_center.jpg" alt="best" class="img">
+					<div class="underbar">SUITO</div>
+				</li>
+				<li class="best-item">
+					<img src="../img/home-3-collections-3-compressor_300x_crop_center.jpg" alt="best" class="img">
+					<div class="underbar">SUITO</div>
+				</li>
+				<li class="best-item">
+					<img src="../img/home-3-collections-4-compressor_300x_crop_center.jpg" alt="best" class="img">
+					<div class="underbar">SUITO</div>
+				</li>
+				<li class="best-item">
+					<img src="../img/home-3-collections-5-compressor_300x_crop_center.jpg" alt="best" class="img">
+					<div class="underbar">SUITO</div>
+				</li>
+			</ul>
+		</div>
+		<div class="best-prev" id="best-prev">&lt;</div>
+		<div class="best-next" id="best-next">&gt;</div>
 	</section>
 	<section class="sellers">
 		<div class="seller-items">
@@ -639,11 +641,11 @@
 				</ul>
 			</div>
 			<div class="seller-prds">
-				<div class="best-prev">&lt;</div>
-				<div class="best-next">&gt;</div>
+				<div class="best-prev" id="seller-prev">&lt;</div>
+				<div class="best-next" id="seller-next">&gt;</div>
 				<h3 class="seller-tit">BEST SELLERS</h3>
 				<p class="seller-slogan">Phasellus lorem malesuada ligula pulvinar cosmo</p>
-				<div class="common-items">
+				<div class="common-items" id="seller-slide">
 					<ul class="common-item">
 						<li class="common-img">
 							<img src="../img/list-img10.jpg" alt="기본" class="img img-def">
@@ -820,11 +822,11 @@
 	<section class="sellers invert">
 		<div class="seller-items invert">
 			<div class="seller-prds rel">
-				<div class="best-prev">&lt;</div>
-				<div class="best-next">&gt;</div>
+				<div class="best-prev" id="seller-prev2">&lt;</div>
+				<div class="best-next" id="seller-next2">&gt;</div>
 				<h3 class="seller-tit">BEST SELLERS</h3>
 				<p class="seller-slogan">Phasellus lorem malesuada ligula pulvinar cosmo</p>
-				<div class="common-items">
+				<div class="common-items" id="seller-slide2">
 					<ul class="common-item">
 						<li class="common-img">
 							<img src="../img/list-img10.jpg" alt="기본" class="img img-def">
@@ -1393,6 +1395,7 @@
 			</ul>
 	</div>
 		</footer>
+		<script src="../js/fx-slide.js"></script>
 	<script src="../js/util.js"></script>
 	<script src="../js/main.js"></script>
 </body>

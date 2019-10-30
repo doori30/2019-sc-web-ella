@@ -68,7 +68,7 @@ $(".sch-layer").click(function (e) {
 
 /* navi sub내용 보이기 2가지 */
 //메인 네이게이션
-$(".navi-under").mouseenter(function () {
+/* $(".navi-under").mouseenter(function () {
   $(this).find(".subs").css({
     "visibility": "visible"
   }).stop().animate({
@@ -103,6 +103,7 @@ $(".navi-show").mouseleave(function () {
   });
 });
 
+
 //배너-(fade, slide(전체), slide(하나씩), slide(세로))
 //메인배너
 (function () {
@@ -120,6 +121,7 @@ $(".navi-show").mouseleave(function () {
     //prev
     // if (now == 0) arr.push(len - 1);
     // else arr.push(now - 1);
+    //양옆으로 하나씩 있는 구조
     arr[0] = (now == 0)?len - 1 : now - 1;
     arr[1] = now; //now
     arr[2] = (now == len-1)?arr[2]=0:arr[2]=now+1;//next
@@ -160,7 +162,35 @@ $(".navi-show").mouseleave(function () {
 		clearInterval(interval);
 		interval = setInterval(ani, delay, "-200%");
 	});
-})();
+})(); */
+
+// fx-slide : 메인 배너
+var mainBanner = new FxSlide({
+	slides: $(".main-ban"), 
+	cnt: 1, 
+	speed: 1000,
+	delay: 4000
+});
+var bestBanner = new FxSlide({
+	slides: $(".best-items"), 
+	cnt: 5, 
+	prev: $("#best-prev"),
+	next: $("#best-next"),
+});
+var sellerBanner = new FxSlide({
+	slides: $("#seller-slide"), 
+	cnt: 3, 
+	prev: $("#seller-prev"),
+	next: $("#seller-next"),
+});
+var sellerBanner2 = new FxSlide({
+	slides: $("#seller-slide2"), 
+	cnt: 3, 
+	prev: $("#seller-prev2"),
+	next: $("#seller-next2"),
+});
+
+
 
 // init Masonry
 var $grid = $('.grid-wrap').imagesLoaded(function () {
