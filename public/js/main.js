@@ -169,7 +169,8 @@ var mainBanner = new FxSlide({
 	slides: $(".main-ban"), 
 	cnt: 1, 
 	speed: 1000,
-	delay: 4000
+  delay: 4000,
+  pager : $(".pagers")
 });
 var bestBanner = new FxSlide({
 	slides: $(".best-items"), 

@@ -16,6 +16,8 @@ var FxSLide = function(){
 	cnt : 5 //화면에 보이는 갯수(이미지)
 	prev : $(".pager-prev"),
 	next : $(".pager-next"),
+	pager : $(".pagers") //숨어있는 이미지를 교체해서 보여 줄 것.
+
 } 
 var slide1 = new.Fxslide(obj);
 */
@@ -32,6 +34,9 @@ var FxSlide = (function(){
 		this.delay = obj.delay ? Number(obj.delay) : 3000;
 		this.tar = 100 / this.cnt;
 		this.width = this.tar*2+100; //container width값
+		this.pagers = (obj.pager && this.cnt ==1)? $(obj.pager) : false;
+		//페이저가 존재하고 변수가 1이라면 실행 아니면 false
+		if(this.pagers)this.pager = this.pagers.children();
 		this.direction = obj.direction =="toRight" ? 0:-1;  //고정(변함이 없음.)
 		this.dir = this.direction; //수시로 변함
 		this.autoplay = obj.autoplay == false ? false : true; //fasle인 경우에만 해당됨.
@@ -51,12 +56,27 @@ var FxSlide = (function(){
 			obj.ani(obj);
 		});
 		if(obj.autoplay){
-		obj.slides.mouseover(function(){
+		obj.slides.parent().mouseover(function(){
 			clearInterval(obj.interval);
 		}).mouseleave(function(){
 			clearInterval(obj.interval);
 			obj.interval = setInterval(obj.ani, obj.delay, obj);
 	});
+	}
+	if(obj.pagers) {
+		obj.pager.click(function(){
+			obj.now = $(this).index();
+			obj.pager.removeClass("active");
+			$(this).addClass("active");
+		if(obj.dir == 0){//오른쪽
+			obj.slides.children().eq(0).html($(obj.slide[obj.now]).clone().html());
+		}
+		else {
+			obj.slides.children().eq(2).html($(obj.slide[obj.now]).clone().html());
+			// obj.slides.append($(obj.slide[obj.arr[obj.now]]).clone());
+		}
+		obj.ani(obj, true);
+		});
 	}
 }
 	FxSlide.prototype.init = function(){
@@ -73,11 +93,16 @@ var FxSlide = (function(){
 		//배열의 갯수만큼 for문을 돌림 / 슬라이드에 이미지 3개li가 있고(배열),움직일 li을 복제하여 붙임. 
 		this.slides.css({"width":this.width+"%", "left":-this.tar+"%"});
 	}
-	FxSlide.prototype.ani = function(obj){
-		obj.slides.stop().animate({"left":(obj.dir * obj.tar * 2)+"%"},obj.speed,
-		function(){
-			if(obj.dir == 0)(obj.now == 0) ? obj.now = obj.len -1 : obj.now--;
-			else (obj.now == obj.len - 1) ? obj.now =0 : obj.now++;
+	FxSlide.prototype.ani = function(obj, clickChk){
+			if(!clickChk) {
+				if(obj.dir == 0)(obj.now == 0) ? obj.now = obj.len -1 : obj.now--;
+				else (obj.now == obj.len - 1) ? obj.now =0 : obj.now++;
+				if(obj.pager)
+					$(obj.pager).removeClass("active");
+					$(obj.pager).eq(obj.now).addClass("active");
+			}
+			obj.slides.stop().animate({"left":(obj.dir * obj.tar * 2)+"%"},obj.speed,
+			function(){
 			obj.dir = obj.direction;
 				obj.init();
 				// if(this.now == 0)
