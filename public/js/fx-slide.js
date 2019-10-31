@@ -16,7 +16,8 @@ var FxSLide = function(){
 	cnt : 5 //화면에 보이는 갯수(이미지)
 	prev : $(".pager-prev"),
 	next : $(".pager-next"),
-	pager : $(".pagers") //숨어있는 이미지를 교체해서 보여 줄 것.
+	pager : $(".pagers") 
+	//숨어있는 이미지를 교체해서 보여 줄 것. / 넣거나 말거나
 
 } 
 var slide1 = new.Fxslide(obj);
@@ -42,8 +43,8 @@ var FxSlide = (function(){
 		this.autoplay = obj.autoplay == false ? false : true; //fasle인 경우에만 해당됨.
 		this.interval = null;
 		this.arr = [];
-		this.startInit(this);
-		this.init(); //this->FxSlide
+		this.startInit(this);//객체생성시 한번만 실행
+		this.init(); //this->FxSlide //애니메이션이 종료되면 실행
 		if(this.autoplay)this.interval = setInterval(this.ani,this.delay,this);//Window
 	}
 	FxSlide.prototype.startInit = function(obj){
@@ -68,14 +69,14 @@ var FxSlide = (function(){
 			obj.now = $(this).index();
 			obj.pager.removeClass("active");
 			$(this).addClass("active");
-		if(obj.dir == 0){//오른쪽
-			obj.slides.children().eq(0).html($(obj.slide[obj.now]).clone().html());
-		}
-		else {
-			obj.slides.children().eq(2).html($(obj.slide[obj.now]).clone().html());
+			//기존의 셋팅되어 있는 그림을 바꾸는 곳
+			//init으로 셋팅이 되어있고 클릭하면 바뀜
+		if(obj.dir == 0)obj.slides.children().eq(0).html($(obj.slide[obj.now]).html());
+		//html원본을 읽어다가 html로 덮음
+		else obj.slides.children().eq(2).html($(obj.slide[obj.now]).html());
 			// obj.slides.append($(obj.slide[obj.arr[obj.now]]).clone());
-		}
-		obj.ani(obj, true);
+		obj.ani(obj, true);//true=click
+		//인자 두개를 받는데 하나만 있는 곳은 undefined가 됨(false)
 		});
 	}
 }
@@ -94,13 +95,15 @@ var FxSlide = (function(){
 		this.slides.css({"width":this.width+"%", "left":-this.tar+"%"});
 	}
 	FxSlide.prototype.ani = function(obj, clickChk){
+		//																		true라면
 			if(!clickChk) {
 				if(obj.dir == 0)(obj.now == 0) ? obj.now = obj.len -1 : obj.now--;
 				else (obj.now == obj.len - 1) ? obj.now =0 : obj.now++;
-				if(obj.pager)
+				if(obj.pagers){
 					$(obj.pager).removeClass("active");
 					$(obj.pager).eq(obj.now).addClass("active");
 			}
+		}
 			obj.slides.stop().animate({"left":(obj.dir * obj.tar * 2)+"%"},obj.speed,
 			function(){
 			obj.dir = obj.direction;
