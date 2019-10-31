@@ -819,7 +819,8 @@ padding: 0.25rem;
 cursor: pointer;
 color: #222;
 font-size: 1.25rem;
-transition: color 0.1s;
+transition: color 0.5s;
+cursor: pointer;
 }
 
 .main-bans .pager.active{
