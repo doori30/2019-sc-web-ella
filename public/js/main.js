@@ -175,7 +175,9 @@ var bestBanner = new FxSlide({
 	slides: $(".best-items"), 
 	cnt: 5, 
 	prev: $("#best-prev"),
-	next: $("#best-next"),
+  next: $("#best-next"),
+  direction: "toRight",
+  autoplay : false
 });
 var sellerBanner = new FxSlide({
 	slides: $("#seller-slide"), 
@@ -187,7 +189,8 @@ var sellerBanner2 = new FxSlide({
 	slides: $("#seller-slide2"), 
 	cnt: 3, 
 	prev: $("#seller-prev2"),
-	next: $("#seller-next2"),
+  next: $("#seller-next2"),
+  direction : "toRight"
 });
 
 

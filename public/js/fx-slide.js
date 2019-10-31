@@ -11,6 +11,8 @@ var FxSLide = function(){
 	slides : $(".slides"),//필수 
 	speed : 500, //애니메이션 속도
 	delay : 3000, //딜레이
+	autoplay : true(기본),false(멈춤) //자동움직임(def:true)
+	direction : "toLeft",  //"toLeft","toRight" (def:"toLeft")
 	cnt : 5 //화면에 보이는 갯수(이미지)
 	prev : $(".pager-prev"),
 	next : $(".pager-next"),
@@ -30,12 +32,14 @@ var FxSlide = (function(){
 		this.delay = obj.delay ? Number(obj.delay) : 3000;
 		this.tar = 100 / this.cnt;
 		this.width = this.tar*2+100; //container width값
-		this.dir = -1;
+		this.direction = obj.direction =="toRight" ? 0:-1;  //고정(변함이 없음.)
+		this.dir = this.direction; //수시로 변함
+		this.autoplay = obj.autoplay == false ? false : true; //fasle인 경우에만 해당됨.
 		this.interval = null;
 		this.arr = [];
 		this.startInit(this);
 		this.init(); //this->FxSlide
-		this.interval = setInterval(this.ani,this.delay,this);//Window
+		if(this.autoplay)this.interval = setInterval(this.ani,this.delay,this);//Window
 	}
 	FxSlide.prototype.startInit = function(obj){
 		obj.prev.click(function(e){
@@ -46,16 +50,18 @@ var FxSlide = (function(){
 			obj.dir = -1;
 			obj.ani(obj);
 		});
+		if(obj.autoplay){
 		obj.slides.mouseover(function(){
 			clearInterval(obj.interval);
 		}).mouseleave(function(){
 			clearInterval(obj.interval);
 			obj.interval = setInterval(obj.ani, obj.delay, obj);
 	});
+	}
 }
 	FxSlide.prototype.init = function(){
 // console.log(this);
-	this.arr=[];
+		this.arr=[];
 		this.arr.push((this.now ==0) ? this.len - 1 : this.now - 1);//왼쪽 (prev)
 		this.arr.push(this.now); //me
 		for(var i = 0; i < this.cnt; i++)this.arr.push((this.now + i +1) % this.len); //오른쪽 (next)
@@ -65,14 +71,14 @@ var FxSlide = (function(){
 		this.slides.empty();
 		for(i in this.arr) this.slides.append($(this.slide[this.arr[i]]).clone());
 		//배열의 갯수만큼 for문을 돌림 / 슬라이드에 이미지 3개li가 있고(배열),움직일 li을 복제하여 붙임. 
-		this.slides.css({"width":this.width+"%", "left":(this.dir * this.tar)+"%"});
+		this.slides.css({"width":this.width+"%", "left":-this.tar+"%"});
 	}
 	FxSlide.prototype.ani = function(obj){
 		obj.slides.stop().animate({"left":(obj.dir * obj.tar * 2)+"%"},obj.speed,
 		function(){
 			if(obj.dir == 0)(obj.now == 0) ? obj.now = obj.len -1 : obj.now--;
 			else (obj.now == obj.len - 1) ? obj.now =0 : obj.now++;
-			obj.dir = -1;
+			obj.dir = obj.direction;
 				obj.init();
 				// if(this.now == 0)
 				// 	this.now = this.len -1;
