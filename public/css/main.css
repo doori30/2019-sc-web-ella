@@ -1171,10 +1171,11 @@ color: #b05d5d;
 	align-items: center;
 	position: relative;
 }
-
+/* 
+위에서 다 정렬이 되어버림.
 .brand-item {
-	flex: 18% 0 1;
-}
+	flex: 18% 0 0;
+} */
 
 /* INSTAS */
 .instas {
@@ -1203,9 +1204,9 @@ color: #b05d5d;
 	position: relative;
 }
 
-.insta-item {
+/* .insta-item {
 	flex: 20% 0 1; 
-}
+} */
 
 .insta-bts {
 	margin-top: 2rem;
