@@ -1094,6 +1094,10 @@ color: #b05d5d;
 	margin-top: 5rem;
 }
 
+.choices > .seller-prds > :not(:first-child) {
+	display:none;
+}
+
 .choice-navis {
 	display: flex;
 	justify-content: center;
@@ -1159,14 +1163,17 @@ color: #b05d5d;
 	padding: 2rem 0;
 }
 
+.brand-wrap {overflow: hidden;}
+
 .brand-items {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+	position: relative;
 }
 
 .brand-item {
-	flex: 18% 0 0;
+	flex: 18% 0 1;
 }
 
 /* INSTAS */
@@ -1193,14 +1200,22 @@ color: #b05d5d;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	position: relative;
 }
 
 .insta-item {
-	flex: 19% 0 0;
+	flex: 20% 0 1; 
 }
 
 .insta-bts {
 	margin-top: 2rem;
+}
+
+#insta-prev {
+	transform: rotateX(-15px);
+}
+#insta-next {
+	transform: rotateX(-15px);
 }
 
 /* footer */
