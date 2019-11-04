@@ -1,6 +1,7 @@
 //서버구동
 const  express = require("express");
 const app = express();
+const path = require("path");
 app.listen (3001, ()=> {
 console.log("http://127.0.01:3001");
 }); 
@@ -16,3 +17,4 @@ console.log(str2);
 // tel = 5337;
 
 //[express]의 path에 대해 알아보자
+console.log(path.join(__dirname,"public"));//path가 가지고 있는 method
