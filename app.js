@@ -1,35 +1,36 @@
-//모듈 Require
+/* Express 구현 */
 const express = require("express");
 const app = express();
-const path = require("path"); //경로를 조합해줌
-app.listen(3000, ()=>{
+app.listen(3000, () => {
 	console.log("http://127.0.0.1:3000");
 });
-//app.use("/", express.static("./public"));
-app.use("/", express.static(path.join(__dirname, "./public")));
+
+/* node_modules */
+const path = require("path");
+const fs = require("fs");
+const morgan = require("morgan");
+
+/* modules */
 
 
-//사용자 모드 Require
+/* Express 설정 */
+app.locals.pretty = true;
+app.use("/", express.static(path.join(__dirname, "public")));
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
-//초기Express 설정
-app.locals.pretty = true; 
-app.use("/", express.static(path.join(__dirname, "./public")));
-app.set("view engine","pug");
-app.set("views",path.join(__dirname,"views"));
+/* morgan 설정 */
+// create a write stream (in append mode)
+//log/access.log 저장
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'log/access.log'), { flags: 'a' })
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
 
-//관리자 Router
-app.get(["/admin/:type","/admin"],(req,res)=>{
-	let type = req.params.type ? req.params.type : "login";
-	switch(type){
-		case "login":
-			adminLogin(req,res);
-			break;
-		default:
-			res.send("페이지를 찾을 수 없습니다.")
-			break;
-	}
-});
 
-function adminLogin(req,res) {
-	res.render("admin/login");
-}
+/* router */
+const frontRouter = require("./router/front");
+const adminRouter = require("./router/admin");
+const sqlRouter = require("./router/rest-sql");
+app.use("/", frontRouter);
+app.use("/admin", adminRouter);
+app.use("/rest-sql", sqlRouter);
