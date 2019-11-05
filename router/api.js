@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+//참조해서 가져옴.
+
 /* Get */
 router.get("/ban/main", getBanMain);
 
