@@ -34,8 +34,9 @@ const sqlExec = async(sql,sqlVals)=>{
  return result;
 	}
 catch(error){
-	console.log(error);
-
+	// console.log(error);
+	connect.release();
+	throw new Error(error);
 }
 };
 

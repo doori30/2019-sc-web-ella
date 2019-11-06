@@ -9,31 +9,30 @@ block content
 	.container
 		.jumbotron
 			h1 REST-SQL TEST
-		.div.create.my-3
-			h3.mb-2 - 저장 (Create)
-			form(name="saveForm" method="post" action="/rest-sql/sql")
+		.div.create.my-3.border-bottom.pb-2
+			h3.mb-2.mt-3 - 저장 (Create)
+			form(name="saveForm" method="post" action="/rest-sql/sql" onsubmit="return saveFn(this)")
 				ul.d-flex
 					.mr-2
 						input.form-control(name="username")
 					li
 						button.btn.btn-primary 저장
-		.div.update.my-3
-			h3.mb-2 - 수정 (Create)
-			form(name="saveForm" method="post" action="/rest-sql/sql")
+		.div.update.my-3.border-bottom.pb-2
+			h3.mb-2.mt-3 - 수정 (Create)
+			form(name="updateForm" method="post" action="/rest-sql/sql" onsubmit="return updateFn(this)")
 				input(type="hidden" name="_method" value="put")
 				input(type="hidden" name="id" value="")
 				ul.d-flex
 					.mr-2
-						input.form-control(name="username")
+						input.form-control(name="username" disabled)
 					li
-						button.btn.btn-success 수정
+						button.btn.btn-success(disabled) 수정
 		.div.read.my-3
 			h3.mb-2 -리스트 (Read)
 				ul.d-flex.flex-wrap
-					- for(var i=0; i<20; i++){
-					li.p-3.m-1.d-flex.border.rounded
-						span.mr-2 1.
-						span.mr-2 홍길동
-						button.btn.btn-danger.btn-sm.mr-2 삭제
-						button.btn.btn-success.btn-sm.mr-2 수정
-					-}
+					each user in users
+						li.p-3.m-1.d-flex.border.rounded
+							span.sp-id.mr-2= user.id
+							span.sp-username.mr-2= user.username
+							button.bt-del.btn.btn-danger.btn-sm.mr-2 삭제
+							button.bt-up.btn.btn-success.btn-sm.mr-2 수정
