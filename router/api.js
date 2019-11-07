@@ -13,4 +13,4 @@ function getBanMain(req,res){
 	res.send("메인배너");
 }
 
-module.export = router;
+module.exports = router;

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>REST-Ajax TEST</title>
+	<link rel="stylesheet" href="../css/fa.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<link href="/css/rest.css" rel="stylesheet">
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
+	<script src="../js/masonry.pkgd.min.js"></script>
+	<script src="../js/wow.min.js"></script>
+</head>
+
+<body class="rest">
+	<div class="container">
+		<div class="jumbotron">
+			<h1>REST-AJAX TEST</h1>
+		</div>
+		<div class="div create my-3 border-bottom pb-2">
+			<h3 class="mb-2 mt-3">- 저장 (Create)</h3>
+			<!-- <form name="saveForm" method="post" action="/rest-sql/sql" onsubmit="return saveFn(this)"> -->
+				<ul class="d-flex">
+					<div class="mr-2">
+						<input class="form-control" name="username" id="username-wr" autofocus>
+					</div>
+					<li>
+						<button class="btn btn-primary" id="bt-wr">저장</button>
+					</li>
+				</ul>
+			<!-- </form> -->
+		</div>
+		<div class="div update my-3 border-bottom pb-2">
+			<h3 class="mb-2 mt-3">- 수정 (Create)</h3>
+			<!-- <form name="updateForm" method="post" action="/rest-sql/sql" onsubmit="return updateFn(this)"> -->
+				<input type="hidden" name="id" id="id-up">
+				<ul class="d-flex">
+					<div class="mr-2">
+						<input class="form-control" name="username" id="username-up" disabled>
+					</div>
+					<li>
+						<button class="btn btn-success" id="bt-up" disabled>수정</button>
+					</li>
+				</ul>
+			<!-- </form> -->
+		</div>
+		<div class="div read my-3">
+			<h3 class="mb-2">-리스트 (Read)
+				<ul class="d-flex flex-wrap lists">
+					<!-- <li class="p-3 m-1 d-flex border rounded"><span class="sp-id mr-2">17</span><span class="sp-username mr-2">123456</span>
+								<button class="bt-del btn btn-danger btn-sm mr-2">삭제</button>
+								<button class="bt-up btn btn-success btn-sm mr-2">수정</button>
+							</li> -->
+				</ul>
+			</h3>
+		</div>
+	</div>
+	<script src="../js/util.js"></script>
+	<script src="/js/rest-ajax.js"></script>
+</body>
+
+</html>
