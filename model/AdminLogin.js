@@ -44,7 +44,8 @@ AdminLogin.init({
 // 		adminPW:"0000",
 // 		grade:9
 // 	});
-// })();<-주석을 안할 경우 즉시실행();을 지워도된다.
+// })();
+//<-주석을 안할 경우 즉시실행();을 지워도된다.
 //sync()메서드를 최초한번 실행하여 테이블이 생성되면 주석처리하여 더이상 쓸 필요가 없다.
 // AdminLogin.sync({force: false});//sync-비동기
 module.exports={AdminLogin}

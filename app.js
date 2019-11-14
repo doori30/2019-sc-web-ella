@@ -13,7 +13,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require('method-override');//method를 덮어씌여서 인식시킴.
 
 /* modules */
-
+// const util = require(path.join(__dirname, "modules/util"));
 
 /* Express 설정 */
 app.locals.pretty = true;
@@ -22,6 +22,11 @@ app.use(bodyParser.urlencoded({extended : false}));
 //app.use(bodyParser.urlencoded({속성안넣어도가능}));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+//set - app자체의 속성값을 가지는 변수
+//use - app자체의 함수를 만들어서 사용 express가 가지는 전역변수(전역함수)/middleware
+//middleware - 서버와 서버사이에 존재함.(클라이언트->req->서버res)
+//																							middleware
+//																								라우터
 
 /* method-override 설정  */
 app.use(methodOverride('X-HTTP-Method')) //Microsoft
