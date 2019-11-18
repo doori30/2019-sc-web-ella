@@ -7,7 +7,7 @@ const util = require(path.join(__dirname, "../modules/util")); //나는 상대�
 
 
 /* REST */
-router.get(":type", getData);
+router.get("/:type", getData);
 
 /* Rounter CB */
 async function getData(req,res,next) {

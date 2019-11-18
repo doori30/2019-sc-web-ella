@@ -1,5 +1,5 @@
 const {Sequelize, sequelize} = require("../modules/sequelize-conn");
-
+                           
 /* Model 작성 */
 const Model = Sequelize.Model;
 class AdminBanner extends Model {}
