@@ -28,6 +28,7 @@ app.set("views", path.join(__dirname, "views"));
 //																							middleware
 //																								라우터
 
+
 /* method-override 설정  */
 app.use(methodOverride('X-HTTP-Method')) //Microsoft
 app.use(methodOverride('X-HTTP-Method-Override')) 
@@ -52,10 +53,12 @@ app.use(morgan('combined', { stream: accessLogStream }));
 /* router - ella */
 const frontRouter = require("./router/front");
 const adminLoginRouter = require("./router/admin-login");
+const adminBannerRouter = require("./router/admin-banner");
 const apiRouter = require("./router/api");
 app.use("/", frontRouter);
 app.use("/admin/login", adminLoginRouter);
 // app.use("/admin/banner", adminRouter);
+app.use("/admin/banner", adminBannerRouter);
 app.use("/api", apiRouter);
 
 

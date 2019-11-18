@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path =require("path");
 const {AdminLogin} = require(path.join(__dirname, "../model/AdminLogin"));
-const util = require(path.join(__dirname, "../modules/util")); //나는 상대경로 조인은 절대경로
+const util = require(path.join(__dirname, "../modules/util")); //나는 상대경로 join은 절대경로
 //선언해야 접근가능
 
 
@@ -10,7 +10,7 @@ const util = require(path.join(__dirname, "../modules/util")); //나는 상대�
 router.post("/", postData);
 
 /* Rounter CB */
-//req,res app이가지는 전연변수
+//req,res app이가지는 전역변수
 async function postData(req,res,next) {//저장
 	let adminID = req.body.adminID;
 	let adminPW = req.body.adminPW;
@@ -21,7 +21,7 @@ async function postData(req,res,next) {//저장
 		}
 	});
 	if(result.length == 1 && result[0].grade > 1)
-		res.render("admin/main.pug")//views
+		res.render("admin/main.pug",{leftNavs:[]})//views
 	else res.send(util.alertAdmin());
 	// res.json(result);//결과값
 };
