@@ -10,6 +10,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.vscode
+.idea
+/node_modules
+/public/uploads
+/log
+/config
+mysql-conn.js
+sequelize-conn.js
+
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
