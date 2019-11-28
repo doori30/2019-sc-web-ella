@@ -11,6 +11,7 @@ const util = require(path.join(__dirname, "../modules/util"));; //나는 상대�
 router.get("/:type", getData);
 router.post("/:type", mt.upload.single("src"), postData);
 //											bannerTop.pug첨부이미지
+router.delete("/:type", deleteData);
 
 /* Rounter CB */
 async function getData(req,res,next) {
@@ -53,22 +54,38 @@ async function postData(req, res, next) {
 	let desc = req.body.desc;
 	let src = "";
 	if(req.file) src = req.file.filename;
-
-	switch(type) {
-		case "top":
-			let result = await AdminBanner.create({
-				title, position, link, desc, src
-			});
-			// res.json(result);
-			res.redirect("/admin/banner/top");
-			break;
-		case "bottom":
-			break;
-		default:
-			next();
-			break;
-	}
+	let result = await AdminBanner.create({
+		 	title, position, link, desc, src
+		 });
+	res.redirect('/admin/banner/top'+type);
+	// switch(type) {
+	// 	case "top":
+	// 		// let result = await AdminBanner.create({
+	// 		// 	title, position, link, desc, src
+	// 		// });
+	// 		// res.json(result);
+	// 		res.redirect("/admin/banner/top");
+	// 		break;
+	// 	case "bottom":
+	// 		break;
+	// 	default:
+	// 		next();
+	// 		break;
+	// }
 }
 
+
+async function deleteData(req,res,next){
+	let type = req.params.type;
+	let id = req.body.id;
+	try{
+	let result = await AdminBanner.destroy({where:{id}});
+	// res.json(result);
+	res.redirect('/admin/banner/top'+type);
+	}
+	catch(error){
+		next(error);
+	}
+}
 
 module.exports = router;

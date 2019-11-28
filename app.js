@@ -13,7 +13,8 @@ const bodyParser = require("body-parser");
 const methodOverride = require('method-override');//method를 덮어씌여서 인식시킴.
 
 /* modules */
-// const util = require(path.join(__dirname, "modules/util"));
+	const createError = require('http-errors');
+	const util = require(path.join(__dirname, "modules/util"));
 
 /* Express 설정 */
 app.locals.pretty = true;
@@ -71,3 +72,21 @@ app.use("/api", apiRouter);
 // app.use("/rest-sql", sqlRouter);
 // app.use("/rest-ajax", ajaxRouter);
 // app.use("/rest-seq", seqRouter);
+
+app.use((req,res,next)=>{
+	// catch 404 and forward to error handler
+	app.use(function(req, res, next) {
+		next(createError(404));//파일을 찾지 못해서 아래의 핸들러로 내려감.
+	});
+
+	// error handler
+	app.use(function(err, req, res, next) {
+		// set locals, only providing error in development
+		res.locals.message = err.message;
+		res.locals.error = req.app.get('env') === 'development' ? err : {};
+				//전역변수임
+		// render the error page
+		res.status(err.status || 500); //위를 거치지 않고 내려올 때 에러
+		res.render('error');
+	});
+});//middleware
