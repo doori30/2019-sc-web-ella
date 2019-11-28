@@ -1,8 +1,10 @@
 extends ../layout/admin/layout-main.pug
 block content
 	h2 배너상단관리
-	h3.my-3 - 배너등록
+	h3.my-3.wr-title - 배너등록
 	form(name="bannerTopForm" action="/admin/banner/top" method="post" enctype="multipart/form-data")
+		input(type="hidden" name="_method" value="post")
+		input(type="hidden" name="id" value="")
 		table.table
 			tr
 				td.w-25(style="max-width:150px;") 제목
@@ -20,8 +22,9 @@ block content
 					input.form-control-file(type="text" name="link" placeholder="링크주소")
 			tr
 				td 첨부파일
-				td
+				td.form-inline
 					input.form-control-file(type="file" name="src")
+					div.src-name.py-1
 			tr
 				td(colspan="2")
 					textarea.form-control(name="desc" style="height:200px;")
@@ -43,7 +46,7 @@ block content
 						img.w-100(src=`/uploads/1911/${list.src}`)
 				.p-2= list.title
 				.p-2
-					button.btn-sm.btn-primary.mr-2 수정
+					button.btn-sm.btn-primary.mr-2(onclick=`chgData(${list.id})`) 수정
 					button.btn-sm.btn-danger(onclick=`confirm('정말로 삭제하시겠습니까?') ? deleteList(${list.id}): false`) 삭제
 block js
 	script(src="/js/banner.js")

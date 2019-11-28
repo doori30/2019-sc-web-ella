@@ -8,32 +8,18 @@ app.listen(3000, () => {
 /* node_modules */
 const path = require("path");
 const fs = require("fs"); //filesystem← ↑
-const morgan = require("morgan");//(log폴더)
+const methodOverride = require('method-override'); //method를 덮어씌여서 인식시킴.
+const morgan = require("morgan"); //(log폴더)
 const bodyParser = require("body-parser");
-const methodOverride = require('method-override');//method를 덮어씌여서 인식시킴.
 
 /* modules */
-	const createError = require('http-errors');
-	const util = require(path.join(__dirname, "modules/util"));
-
-/* Express 설정 */
-app.locals.pretty = true;
-app.use("/", express.static(path.join(__dirname, "public")));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}));
-//app.use(bodyParser.urlencoded({속성안넣어도가능}));
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
-//set - app자체의 속성값을 가지는 변수
-//use - app자체의 함수를 만들어서 사용 express가 가지는 전역변수(전역함수)/middleware
-//middleware - 서버와 서버사이에 존재함.(클라이언트->req->서버res)
-//																							middleware
-//																								라우터
+const createError = require('http-errors');
+const util = require(path.join(__dirname, "modules/util"));
 
 
 /* method-override 설정  */
 app.use(methodOverride('X-HTTP-Method')) //Microsoft
-app.use(methodOverride('X-HTTP-Method-Override')) 
+app.use(methodOverride('X-HTTP-Method-Override'))
 // Google/GData
 app.use(methodOverride('X-Method-Override')) //IBM
 app.use(methodOverride(function (req, res) {
@@ -47,10 +33,30 @@ app.use(methodOverride(function (req, res) {
 /* morgan 설정 */
 // create a write stream (in append mode)
 //log/access.log 저장
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'log/access.log'), { flags: 'a' })
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'log/access.log'), {
+	flags: 'a'
+})
 // setup the logger
-app.use(morgan('combined', { stream: accessLogStream }));
+app.use(morgan('combined', {
+	stream: accessLogStream
+}));
 
+
+/* Express 설정 */
+app.locals.pretty = true;
+app.use("/", express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.urlencoded({속성안넣어도가능}));
+app.use(express.multipart());
+app.use(express.methodOverride());
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+//set - app자체의 속성값을 가지는 변수
+//use - app자체의 함수를 만들어서 사용 express가 가지는 전역변수(전역함수)/middleware
+//middleware - 서버와 서버사이에 존재함.(클라이언트->req->서버res)
+//																							middleware
+//																								라우터
 
 /* router - ella */
 const frontRouter = require("./router/front");
@@ -73,20 +79,18 @@ app.use("/api", apiRouter);
 // app.use("/rest-ajax", ajaxRouter);
 // app.use("/rest-seq", seqRouter);
 
-app.use((req,res,next)=>{
-	// catch 404 and forward to error handler
-	app.use(function(req, res, next) {
-		next(createError(404));//파일을 찾지 못해서 아래의 핸들러로 내려감.
-	});
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
-	// error handler
-	app.use(function(err, req, res, next) {
-		// set locals, only providing error in development
-		res.locals.message = err.message;
-		res.locals.error = req.app.get('env') === 'development' ? err : {};
-				//전역변수임
-		// render the error page
-		res.status(err.status || 500); //위를 거치지 않고 내려올 때 에러
-		res.render('error');
-	});
-});//middleware
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
