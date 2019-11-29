@@ -1,11 +1,14 @@
 const mysql = require("mysql2/promise");
 //async await가져오기 위해 promise사용
 const pool = mysql.createPool({
-	host : "localhost",
+	host : "db.doori30.gabia.io",
 	port : 3306,
-	user : "ella",
-	password : "000000",
-	database : "ella",
+	user : "doori30",
+	// user : "ella",
+	password : "tmdnlxl1004!!",
+	// password : "000000",
+	database : "dbdoori30",
+	// database : "ella",
 	connectionLimit : 10, 
 	//동접자를 처리하기위해(사용량에 따라 늘리고 줄이기)
 	waitForConnections : true //객체를 돌려줄 때까지 기다림.
