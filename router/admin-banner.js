@@ -10,9 +10,9 @@ const util = require(path.join(__dirname, "../modules/util"));; //나는 상대�
 /* REST */
 router.get("/:type", getData);
 router.post("/:type", mt.upload.single("src"), postData);
-//											bannerTop.pug첨부이미지
+router.post("/:type/:id", mt.upload.single("src"), putData);
 router.delete("/:type", deleteData);
-router.put("/:type", putData);
+
 
 /* Rounter CB */
 async function getData(req,res,next) {
@@ -32,23 +32,20 @@ async function getData(req,res,next) {
 	switch(type){
 		case "top":
 			let result;
-			if(req.query.id){
-				result = await AdminBanner.findOne({
-					where:{id : req.query.id}
-				});
+			if(req.query.id) {
+				result = await AdminBanner.findOne({ where: { id : req.query.id } });
 				res.json(result);
 			}
-			else{
+			else {
 				result = await AdminBanner.findAll({
-					order:[["id","desc"]],
+					order: [["id", "desc"]],
 				});
 				vals.lists = result;
-				res.render("admin/bannerTop",vals);
+				res.render("admin/bannerTop", vals);
 			}
-			// res.json(result);
 			break;
 		case "bottom":
-			res.render("admin/bannerBottom",vals);
+			res.render("admin/bannerBottom", vals);
 			break;
 		default:
 			next();
@@ -61,13 +58,14 @@ async function postData(req, res, next) {
 	let title = req.body.title;
 	let position = req.body.position;
 	let link = req.body.link;
-	let desc = req.body.desc;
+	let desc = req.body.desc.trim().replace(/\n/g,"").replace(/\r/g,"").replace(/\t/g,"");
 	let src = "";
 	if(req.file) src = req.file.filename;
 	let result = await AdminBanner.create({
 		 	title, position, link, desc, src
 		 });
-	res.redirect('/admin/banner/top'+type);
+	res.redirect('/admin/banner/top');
+}
 	// switch(type) {
 	// 	case "top":
 	// 		// let result = await AdminBanner.create({
@@ -82,7 +80,7 @@ async function postData(req, res, next) {
 	// 		next();
 	// 		break;
 	// }
-}
+
 
 
 async function deleteData(req,res,next){
@@ -91,15 +89,36 @@ async function deleteData(req,res,next){
 	try{
 	let result = await AdminBanner.destroy({where:{id}});
 	// res.json(result);
-	res.redirect('/admin/banner/top'+type);
+	res.redirect('/admin/banner/top');
 	}
 	catch(error){
 		next(error);
 	}
 }
 
+//value = value.replace(/\s+/, "");//왼쪽 공백제거
+// value = value.replace(/\s+$/g, "");//오른쪽 공백제거
+// value = value.replace(/\n/g, "");//행바꿈제거
+// value = value.replace(/\r/g, "");//엔터제거
+//.trim().replace(/\n/g,"").replace(/\r/g,"").replace(/\t/g,"");//앞뒤의 공백과 엔터옵션을 없앰.(한줄로)
+
 async function putData(req,res,next){
-	res.send('저장 되었습니다.');
+	let type = req.params.type;
+	let title = req.body.title;
+	let position = req.body.position;
+	let link = req.body.link;
+	let desc = req.body.desc.trim().replace(/\n/g,"").replace(/\r/g,"").replace(/\t/g,"");//앞뒤의 공백과 엔터옵션을 없앰.(한줄로)
+	let obj = [];
+	if(req.file) obj = {title, position, link, desc, src: req.file.filename}
+	else obj = {title, position, link, desc}
+
+	let result = await AdminBanner.update(obj, {
+			 where:{
+				 id: req.params.id
+		 }
+		});
+	res.redirect('/admin/banner/top');
+	// res.send('저장 되었습니다.');
 }
 
 module.exports = router;
