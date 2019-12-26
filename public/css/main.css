@@ -1,10 +1,12 @@
 /* 공통사항 */
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato:700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 html,
 body {
-	font-family: 'Lato', sans-serif;
+	/* font-family: 'Lato', sans-serif; */
+	font-family: 'Roboto', sans-serif;
 }
 
 .wrap {
@@ -154,9 +156,9 @@ body {
 }
 
 .common-img .size {
-	width: 24px;
-	height: 24px;
-	line-height: 24px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
 	border-radius: 50%;
 	margin: 0 0.25rem;
 	color: #232323;
@@ -184,11 +186,18 @@ body {
 	color: #aaa;
 }
 
-.common-brand,
+.common-brand{
+	font-size: 1.3em;
+	color: #555;
+	font-weight: bold;
+}
+
+/* .common-brand, */
 .common-summary,
-.common-price {
+.common-price, 
+.common-price span {
 	font-size: 1.125em;
-	color: #444;
+	color: #444
 }
 
 .common-brand {
@@ -202,6 +211,12 @@ body {
 .common-price {
 	margin-top: 0.25rem;
 	font-weight: 900;
+	color: #b05d5d;
+}
+
+.common-price span{
+	text-decoration: line-through;
+	color: #ccc
 }
 
 .common-rel {
@@ -211,8 +226,8 @@ body {
 }
 
 .common-rel>.rel {
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	overflow: hidden;
 	padding: 2px;
@@ -230,7 +245,8 @@ body {
 .common-rel>.rel>div>img {
 	position: absolute;
 	width: 100%;
-	top: 0;
+	height: 100%;
+	top: 5px;
 	left: 0;
 	transform: translateY(-20%);
 }
@@ -474,7 +490,7 @@ body {
 }
 
 .top-links>.logo {
-	width: 100px;
+	width: 30%;
 }
 
 .top-link>.desc {
@@ -887,6 +903,7 @@ color: #b05d5d;
 	background-color: #111;
 	overflow: hidden;
 	cursor: pointer;
+	border-radius: 50%;
 }
 
 .best-item>img {
@@ -904,7 +921,7 @@ color: #b05d5d;
 
 .best-item>.underbar {
 	position: absolute;
-	top: 50%;
+	top: 20%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: #f9f9f9;
@@ -960,14 +977,18 @@ color: #b05d5d;
 	position: relative;
 }
 
+.seller-imgs > img{
+	opacity: 0.8;
+}
+
 .seller-conts {
 	position: absolute;
-	left: 15%;
+	left: 19%;
 	top: 50%;
 	transform: translateY(-50%);
 	text-align: center;
 	width: 60%;
-	color: #f9f9f9;
+	color: #444;
 }
 
 .seller-conts>.seller-tit {
@@ -1011,6 +1032,16 @@ color: #b05d5d;
 	background-color: #f8f8f8;
 }
 
+.arrivals-tit {
+	font-size: 2rem;
+	text-align: center;
+	padding: 1rem;
+}
+
+.arrivals-tit>span {
+	font-size: 1rem;
+}
+
 .arrival-items {
 	text-align: center;
 	display: flex;
@@ -1021,8 +1052,9 @@ color: #b05d5d;
 .arrival-item {
 	flex: 31% 0 0;
 	position: relative;
-	color: #fff;
+	color: #444;
 	overflow: hidden;
+	font-weight: bold;
 }
 
 .arrival-item>li:not(:first-child) {
@@ -1050,7 +1082,7 @@ color: #b05d5d;
 .arrival-item>.arrival-tit {
 	top: 40%;
 	left: 15%;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 .arrival-item>.arrival-cont {
@@ -1066,6 +1098,10 @@ color: #b05d5d;
 	opacity: 0;
 }
 
+.arrival-item:hover
+ {
+	color: #fff;
+ }
 .arrival-item:hover>.arrival-img>img {
 	opacity: 0.8;
 	transform: scale(1.2);
@@ -1160,11 +1196,17 @@ color: #b05d5d;
 .brands {
 	border-top: 1px solid #ccc;
 	padding: 2rem 0;
+	text-align: center;
+}
+
+.brands > h3 {
+	padding: 3px;
 }
 
 .brand-wrap {overflow: hidden;}
 
 .brand-items {
+	margin-top: 1rem;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -1203,9 +1245,10 @@ color: #b05d5d;
 	position: relative;
 }
 
-/* .insta-item {
-	flex: 20% 0 1; 
-} */
+.insta-item {
+	/* flex: 20% 0 1;  */
+	padding: 0.5rem;
+}
 
 .insta-bts {
 	margin-top: 2rem;
@@ -1269,7 +1312,7 @@ footer a:active {
 }
 
 .footer-item:last-child {
-	flex: 40% 0 0;
+	flex: 30% 0 0;
 }
 
 .footer-item .tit {
