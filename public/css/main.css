@@ -469,6 +469,10 @@ body {
 	font-weight: bold;
 }
 
+.sch-layer .prd-price {
+	color: #cb2027;
+}
+
 .sch-layer .prd-refs {
 	display: flex;
 	align-items: center;
@@ -496,6 +500,11 @@ body {
 .top-link>.desc {
 	font-weight: bold;
 	text-align: right;
+}
+
+.top-link>.desc:hover {
+	cursor: pointer;
+	color: #cb2027;
 }
 
 .top-link>.bts {
@@ -544,6 +553,16 @@ body {
 	color: #fff;
 	font-weight: bold;
 	letter-spacing: 1.5px;
+}
+
+.top-navis .navi-point {
+	color: #cee4fc;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.top-navis .navi-point:hover {
+	color: #ef5845;
 }
 
 .top-navis .subs {
@@ -718,7 +737,7 @@ body {
 }
 
 .grid-card>ul {
-	flex: 19% 0 0;
+	flex: 33% 0 0;
 }
 
 .grid-card>ul>li {
@@ -983,18 +1002,18 @@ color: #b05d5d;
 
 .seller-conts {
 	position: absolute;
-	left: 19%;
+	left: 17%;
 	top: 50%;
 	transform: translateY(-50%);
 	text-align: center;
-	width: 60%;
-	color: #444;
+	/* width: 100%; */
+	color: #eee;
 }
 
 .seller-conts>.seller-tit {
 	font-size: 2.5rem;
 	font-weight: 900;
-	padding: 0.5rem 0;
+	padding: 0;
 }
 
 .seller-conts>.seller-slogan {
@@ -1440,17 +1459,3 @@ footer a:active {
 	margin-right: 20px;
 }
 
-/* 768 ~ 991 - md - 태블릿 세로 */
-@media screen and (max-width: 991px) {
-
-}
-
-
-/* 576 ~ 767 - sm - 스마트폰 가로 */
-@media screen and (max-width: 767px) {
-	
-}
-
-@media screen and (max-width: 575px) {
-
-}
