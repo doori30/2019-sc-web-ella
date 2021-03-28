@@ -41,7 +41,7 @@ block content
 					if list.src == ""
 						img.w-100(src="https://via.placeholder.com/300x200")
 					else
-						img.w-100(src=`/uploads/1911/${list.src}`)
+						img.w-100(src=`/uploads/${list.link}/${list.src}`)
 				.p-2= list.title
 				.p-2
 					button.btn-sm.btn-primary.mr-2(onclick=`chgData(${list.id})`) 수정
