@@ -3,7 +3,7 @@ const router = express.Router();
 const mt = require("../modules/multer-conn");
 const path = require("path");
 const { AdminBanner } = require(path.join(__dirname, "../model/AdminBanner"));
-const util = require(path.join(__dirname, "../modules/util"));; //나는 상대경로 join은 절대경로
+const util = require(path.join(__dirname, "../modules/util")); //나는 상대경로 join은 절대경로
 //선언해야 접근가능
 
 
@@ -40,6 +40,11 @@ async function getData(req,res,next) {
 				result = await AdminBanner.findAll({
 					order: [["id", "desc"]],
 				});
+				result.map(banner => {
+						banner.dataValues.link = banner.dataValues.src && mt.getDir(banner.dataValues.src);
+						banner._previousDataValues.link = banner._previousDataValues.src && mt.getDir(banner.dataValues.src)
+						return banner;
+					});
 				vals.lists = result;
 				res.render("admin/bannerTop", vals);
 			}
