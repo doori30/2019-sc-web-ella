@@ -7,7 +7,7 @@ AdminBanner.init({
 	src: { type: Sequelize.STRING, allowNull: false },
 	position: { type: Sequelize.ENUM("top", "bot"), defaultValue: "top" },
 	title: { type: Sequelize.STRING, allowNull: true },
-	desc: { type: Sequelize.STRING, allowNull: true },
+	description: { type: Sequelize.STRING, allowNull: true },
 	link: { type: Sequelize.STRING, allowNull: true },
 },{
 	sequelize,
