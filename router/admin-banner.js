@@ -40,7 +40,7 @@ async function getData(req,res,next) {
 				result = await AdminBanner.findAll({
 					order: [["id", "desc"]],
 				});
-				result.map(banner => {
+				result = result.map(banner => {
 						banner.dataValues.link = banner.dataValues.src && mt.getDir(banner.dataValues.src);
 						banner._previousDataValues.link = banner._previousDataValues.src && mt.getDir(banner.dataValues.src)
 						return banner;
