@@ -1,7 +1,6 @@
 const mysql = require("mysql2/promise");
 //async await가져오기 위해 promise사용
 const pool = mysql.createPool({
-<<<<<<< HEAD
 	host : "ls-933041b199472ed4b7e9d975a30de433220bd814.clv2i0roeqfa.ap-northeast-2.rds.amazonaws.com",
 	port : 3306,
 	user : "dbmasteruser",
@@ -13,19 +12,17 @@ const pool = mysql.createPool({
 	connectionLimit : 10, 
 	//동접자를 처리하기위해(사용량에 따라 늘리고 줄이기)
 	waitForConnections : true //객체를 돌려줄 때까지 기다림.
-=======
-  host: "ls-933041b199472ed4b7e9d975a30de433220bd814.clv2i0roeqfa.ap-northeast-2.rds.amazonaws.com",
-  port: 3306,
-  user: "dbmasteruser",
-// user : "ella",
-  password: "v%~KGvaPe~m+90;jq5a(9Q{S1vFCHa1[",
-// password : "000000",
-  database: "dbmaster",
-// database : "ella",
-  connectionLimit: 10,
-//동접자를 처리하기위해(사용량에 따라 늘리고 줄이기)
-  waitForConnections: true //객체를 돌려줄 때까지 기다림.
->>>>>>> 9781fe169ea14d2f45ccdef1ba54d400cefc9dd6
+//   host: "ls-933041b199472ed4b7e9d975a30de433220bd814.clv2i0roeqfa.ap-northeast-2.rds.amazonaws.com",
+//   port: 3306,
+//   user: "dbmasteruser",
+// // user : "ella",
+//   password: "v%~KGvaPe~m+90;jq5a(9Q{S1vFCHa1[",
+// // password : "000000",
+//   database: "dbmaster",
+// // database : "ella",
+//   connectionLimit: 10,
+// //동접자를 처리하기위해(사용량에 따라 늘리고 줄이기)
+//   waitForConnections: true //객체를 돌려줄 때까지 기다림.
 });
 
 /* async await하기전 */
