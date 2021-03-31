@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 /* GET */
-router.get("/login", getLogin);
+// router.get("/login", getLogin);
+router.get("/banner/top", getLogin);
 router.get("/search", getSearch);
 // router.post();
 // router.delete();
